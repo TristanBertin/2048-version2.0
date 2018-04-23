@@ -8,6 +8,7 @@ Grid::Grid(QObject *parent) : QObject(parent)
     this->initValues();
     this->initRandomSpot();
     this->initRandomSpot();
+    gridChanged();
 }
 
 Grid::Grid(const Grid &grid){ // constructeur de copie

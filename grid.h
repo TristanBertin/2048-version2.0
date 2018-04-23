@@ -7,9 +7,7 @@
 #include <QTime>
 #include <QFile>
 #include <QTextStream>
-#include <QMessageBox>
-#include <QApplication>
-#include <QInputDialog>
+
 
 class Grid : public QObject
 {

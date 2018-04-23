@@ -3,6 +3,7 @@
 #include <QtQml>
 #include <QList>
 #include "grid.h"
+#include <QApplication>
 
 
 int main(int argc, char *argv[])
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
    Grid grid1 ;
 
    engine.rootContext()->setContextProperty("vueObjetCpp",&grid1);
-   engine.load(QUrl(QStringLiteral("qrc:/Interface.qml")));
+   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();
 }
