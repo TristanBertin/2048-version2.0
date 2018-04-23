@@ -15,4 +15,7 @@ Lorsque vous parvenez à faire entrer en collision 2 briques avec le même numé
 
 Pour déplacer les briques sur la grille, vous devez juste choisir une direction (haut, droite, bas ou gauche). Toutes les briques vont se déplacer dans la direction choisie, jusqu'à ce qu'elles fusionnent avec une brique de même valeur ou bien qu'elles soient bloquées par une brique avec un numéro différent.
 
-![Screenshot](Capture.JPG)
+
+.
+<p align="center"
+![Screenshot](Capture.JPG) p>
