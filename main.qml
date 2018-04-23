@@ -8,18 +8,6 @@ Window {
     color: "#d97373"
     title: qsTr("2048 4ever")
 
-
-
-    Text {
-        id: text1
-        x: 37
-        y: 18
-        width: 100
-        height: 50
-        text :vueObjetCpp.gridQML[0]+" _ "+vueObjetCpp.gridQML[1]+" _ "+vueObjetCpp.gridQML[2]+" _ "+vueObjetCpp.gridQML[3]
-
-    }
-
     Grid {
         transformOrigin: Item.TopLeft
         anchors.rightMargin: 84
