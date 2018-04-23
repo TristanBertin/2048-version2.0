@@ -44,8 +44,12 @@ public:
 
     QList<int> readGrid();
     bool readLifeState();
+    int readScore();
+
     Q_PROPERTY(QList<int> gridQML READ readGrid NOTIFY gridChanged);
     Q_PROPERTY(bool alive READ readLifeState NOTIFY replay);
+    Q_PROPERTY(int score READ readScore NOTIFY gridChanged);
+
 
     Q_INVOKABLE void fusionRight(bool testDeath);
     Q_INVOKABLE void fusionLeft( bool testDeath);

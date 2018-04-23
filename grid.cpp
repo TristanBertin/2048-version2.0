@@ -273,8 +273,6 @@ void Grid::checkDeath() {
     if(!gridTest.cellShiftedRight && !gridTest.cellShiftedLeft && !gridTest.cellShiftedUp && !gridTest.cellShiftedDown) {
         alive = false;
         replay();
-        cellTab[0][0]=2048;
-        gridChanged();
 
     } else {
        cellShiftedRight = false;
@@ -289,8 +287,21 @@ void Grid::newGame(){
     this->initRandomSpot();
     this->initRandomSpot();
     gridChanged();
+    alive = true;
+    replay();
 }
 
+int Grid::readScore(){
+    int score=0;
+    for(int i=0; i< nbCell ; i++)
+    {
+        for(int j=0; j< nbCell; j++)
+        {
+           score += cellTab[i][j] ;
+        }
+    }
+    return score;
+}
 
 
 
