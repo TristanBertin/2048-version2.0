@@ -1,8 +1,11 @@
 # 2048-version2.0
 
-### Descriptif de l'applcation
+### Descriptif de l'application
 
-L'application est très simple d'utilisation. Les touches haut, bas, gauche et droite du clavier seront utilisés pour décaler les cases vers leurs directions respectives. Le bouton New permet de générer une nouvelle partie et le score est affiché à chaque mouvement de la grille. 
+L'application est très simple d'utilisation. Les touches haut, bas, gauche et droite du clavier seront utilisés pour décaler les cases vers leurs directions respectives.
+
+Le bouton New permet de générer une nouvelle partie et le score est affiché à chaque mouvement de la grille. 
+
 Le jeu se termine lorsqu'aucun mouvement n'est plus possible, la fenêtre affiche alors "You loose", seul le bouton New est accessible.
 
 
