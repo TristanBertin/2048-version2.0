@@ -22,6 +22,7 @@ Grid::Grid(const Grid &grid){ // constructeur de copie
 }
 
 QList<int> Grid::readGrid() {
+
     QList<int> cellList ;
     for(int i=0; i< nbCell ; i++)
     {
@@ -31,6 +32,10 @@ QList<int> Grid::readGrid() {
         }
     }
     return cellList;
+}
+
+bool Grid::readLifeState() {
+    return alive;
 }
 
 void Grid::display() //affiche sous forme matricielle
@@ -44,6 +49,10 @@ void Grid::display() //affiche sous forme matricielle
         }
         cout <<"|"<< endl;
     }
+}
+
+int Grid::getNbCell(){
+    return nbCell;
 }
 
 void Grid::initValues() {
@@ -66,7 +75,9 @@ int Grid::twoOrFour() {
 
 void Grid::initRandomSpot(){
   bool go =true ;
-  while(go) {
+  int limite = 50;
+  while(go && limite >0) {
+    limite --;
     int i = int(rand()%5); // nombre entre 0 et 4 inclu
     int j = int(rand()%5);
     if(cellTab[j][i] == 0 ) {
@@ -260,7 +271,11 @@ void Grid::checkDeath() {
     gridTest.fusionUp(false);
 
     if(!gridTest.cellShiftedRight && !gridTest.cellShiftedLeft && !gridTest.cellShiftedUp && !gridTest.cellShiftedDown) {
-        cout <<"******"<<" Game Over" << "*****"<< endl;
+        alive = false;
+        replay();
+        cellTab[0][0]=2048;
+        gridChanged();
+
     } else {
        cellShiftedRight = false;
        cellShiftedLeft = false;
@@ -269,8 +284,12 @@ void Grid::checkDeath() {
     }
 }
 
-
-
+void Grid::newGame(){
+    this->initValues();
+    this->initRandomSpot();
+    this->initRandomSpot();
+    gridChanged();
+}
 
 
 

@@ -16,6 +16,7 @@ private :
 
     int nbCell = 4  ;
     int cellTab[4][4] ;
+    bool alive = true;
 
     bool cellShiftedDown = false;
     bool cellShiftedUp = false;
@@ -24,30 +25,36 @@ private :
 
     int twoOrFour();
     void initValues();
-    void initRandomSpot() ;
-
-signals:
-    void gridChanged();
-
-public:
-    Grid(QObject *parent= nullptr);
-    Grid( const Grid &grid );
-
-    QList<int> readGrid();
-    Q_PROPERTY(QList<int> gridQML READ readGrid NOTIFY gridChanged);
-
+    void initRandomSpot();
     void display();
     void checkDeath();
-
-    Q_INVOKABLE void fusionRight(bool testDeath);
-    Q_INVOKABLE void fusionLeft( bool testDeath);
-    Q_INVOKABLE void fusionUp(   bool testDeath);
-    Q_INVOKABLE void fusionDown( bool testDeath);
 
     void shiftRight();
     void shiftLeft();
     void shiftUp();
     void shiftDown();
+
+signals:
+    void gridChanged();
+    void replay();
+
+public:
+    explicit Grid(QObject *parent= nullptr);
+    Grid( const Grid &grid );
+
+    QList<int> readGrid();
+    bool readLifeState();
+    Q_PROPERTY(QList<int> gridQML READ readGrid NOTIFY gridChanged);
+    Q_PROPERTY(bool alive READ readLifeState NOTIFY replay);
+
+    Q_INVOKABLE void fusionRight(bool testDeath);
+    Q_INVOKABLE void fusionLeft( bool testDeath);
+    Q_INVOKABLE void fusionUp(   bool testDeath);
+    Q_INVOKABLE void fusionDown( bool testDeath);
+    Q_INVOKABLE void newGame();
+
+    int getNbCell();
+
 };
 
 #endif //
