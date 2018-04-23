@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Grid::Grid(QObject *parent)
+Grid::Grid(QObject *parent) : QObject(parent)
 {
     this->initValues();
     this->initRandomSpot();
@@ -18,6 +18,18 @@ Grid::Grid(const Grid &grid){ // constructeur de copie
            cellTab[i][j] = grid.cellTab[i][j] ;
         }
     }
+}
+
+QList<int> Grid::readGrid() {
+    QList<int> cellList ;
+    for(int i=0; i< nbCell ; i++)
+    {
+        for(int j=0; j< nbCell; j++)
+        {
+           cellList.append(cellTab[i][j]);
+        }
+    }
+    return cellList;
 }
 
 void Grid::display() //affiche sous forme matricielle
@@ -106,6 +118,7 @@ void Grid::fusionRight(bool testDeath) {
   if(cellShiftedRight ) {
       initRandomSpot();
   }
+  gridChanged();
   if(testDeath) this->checkDeath();
 }
 
@@ -147,6 +160,7 @@ void Grid::fusionLeft(bool testDeath) {
   if( cellShiftedLeft ){
       initRandomSpot();
   }
+  gridChanged();
   if(testDeath) this->checkDeath();
 }
 
@@ -188,6 +202,7 @@ void Grid::fusionUp(bool testDeath) {
   if(cellShiftedUp) {
       initRandomSpot();
   }
+  gridChanged();
   if(testDeath) this->checkDeath();
 }
 
@@ -230,6 +245,7 @@ void Grid::fusionDown(bool testDeath) {
   if(cellShiftedDown){
     initRandomSpot();
   }
+  gridChanged();
   if(testDeath) this->checkDeath();
 }
 

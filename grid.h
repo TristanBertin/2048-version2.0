@@ -28,18 +28,23 @@ private :
     void initValues();
     void initRandomSpot() ;
 
-public:
+signals:
+    void gridChanged();
 
+public:
     Grid(QObject *parent= nullptr);
     Grid( const Grid &grid );
+
+    QList<int> readGrid();
+    Q_PROPERTY(QList<int> gridQML READ readGrid NOTIFY gridChanged);
 
     void display();
     void checkDeath();
 
-    void fusionRight(bool testDeath);
-    void fusionLeft( bool testDeath);
-    void fusionUp(   bool testDeath);
-    void fusionDown( bool testDeath);
+    Q_INVOKABLE void fusionRight(bool testDeath);
+    Q_INVOKABLE void fusionLeft( bool testDeath);
+    Q_INVOKABLE void fusionUp(   bool testDeath);
+    Q_INVOKABLE void fusionDown( bool testDeath);
 
     void shiftRight();
     void shiftLeft();

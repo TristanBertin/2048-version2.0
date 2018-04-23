@@ -7,28 +7,19 @@
 
 int main(int argc, char *argv[])
 {
+   QGuiApplication app(argc, argv);
+
    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-   QCoreApplication a(argc, argv);
+   //QCoreApplication a(argc, argv);
 
-    srand(time(NULL));
-    Grid grid1 ;
+   QQmlApplicationEngine engine;
 
+   srand(time(NULL));
 
-//    cout <<"*****  fusionRight   *****"<< endl;
-//    grid1.fusionRight(true);
-//    grid1.display();
-//    cout <<"*****   fusionLeft   ****"<< endl;
-//    grid1.fusionLeft(true);
-//    grid1.display();
-//    cout <<"*****   fusionDown   ****"<< endl;
-//    grid1.fusionDown(true);
-//    grid1.display();
-//    cout <<"******  fusionUp   *****"<< endl;
-//    grid1.fusionUp(true);
-//    grid1.display();
+   Grid grid1 ;
 
-     engine.rootContext()->setContextProperty("vueObjetCpp",&move);
-     engine.load(QUrl(QStringLiteral("qrc:/Interface.qml")));
+   engine.rootContext()->setContextProperty("vueObjetCpp",&grid1);
+   engine.load(QUrl(QStringLiteral("qrc:/Interface.qml")));
 
-    return a.exec();
+    return app.exec();
 }
